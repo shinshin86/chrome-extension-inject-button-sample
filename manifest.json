@@ -1,0 +1,31 @@
+{
+  "name": "Chrome extension inject button sample",
+  "description": "Sample of inject button at google page",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "index.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.google.com/*"
+      ],
+      "js": ["src/content-script.ts"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ],
+  "background": {
+    "service_worker": "background.ts"
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+M",
+        "mac": "MacCtrl+M"
+      }
+    }
+  },
+  "permissions": ["activeTab"]
+}
